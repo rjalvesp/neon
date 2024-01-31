@@ -1,0 +1,81 @@
+<div class="card-header">
+  <div class="card-header__main-icon">
+    <span class="material-icons material-icons-outlined"> lightbulb </span>
+  </div>
+  <div class="card-header__icon">
+    <span class="material-icons"> assignment </span>
+  </div>
+  <div class="card-header__actions">
+    <div class="card-header__icon">
+      <a
+        [routerLink]="['/ideas', idea?.id, 'edit']"
+        class="card-header__icon-action edit"
+      >
+        <span class="material-icons"> edit </span>
+      </a>
+    </div>
+    <div class="card-header__icon">
+      <button
+        class="card-header__icon-action delete"
+        type="button"
+        (click)="deleteIdea()"
+      >
+        <span class="material-icons"> clear </span>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="card-content">
+  <div class="content">
+    <img class="content-image" src="https://placehold.co/600x400" alt="image" />
+    <div class="content-data">
+      <h3 class="content-summary">{{ idea?.summary }}</h3>
+      <div class="content-info">
+        <div class="rating">
+          <p class="rating-title">
+            <span class="sm-none">Posted</span>
+            <a>{{ idea?.postedBy }}</a>
+          </p>
+          <div
+            *ngFor="let rate of rates; let i = index"
+            class="rating-stars"
+            (mouseleave)="resetHover()"
+          >
+            <span
+              class="material-icons"
+              (click)="rateIdea(rate)"
+              (mouseover)="setHover(i)"
+            >
+              {{
+                hoverIndex < i && selectedRate <= i ? 'star_outlined' : 'star'
+              }}
+            </span>
+          </div>
+        </div>
+        <div class="date small">
+          <span class="material-icons"> calendar_month </span>
+          {{ idea?.createdAt | date : 'longDate' }}
+          {{ idea?.createdAt | date : 'shortTime' }}
+        </div>
+      </div>
+    </div>
+    <div class="content-details">
+      <div class="content-details__block">
+        <div class="content-details__block-key bold">Assignees</div>
+        <div class="content-details__block-value"><a>Assignees</a></div>
+      </div>
+      <div class="content-details__block">
+        <div class="content-details__block-key bold">Workflow</div>
+        <div class="content-details__block-value">
+          <a>{{ idea?.workflow }}</a>
+        </div>
+      </div>
+      <div class="content-details__block">
+        <div class="content-details__block-key bold">Review Score</div>
+        <div class="content-details__block-value">
+          <div class="badge">{{ score }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

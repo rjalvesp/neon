@@ -1,0 +1,18 @@
+<div
+  class="content"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  [scrollWindow]="false"
+  (scrolled)="onScroll()"
+>
+  <a [routerLink]="['/ideas/new']">Create new</a>
+  <ng-container *ngFor="let idea of ideas">
+    <neon-card>
+      <neon-summary
+        [idea]="idea"
+        (actionPerformed)="onActionPerformed($event)"
+      ></neon-summary>
+    </neon-card>
+  </ng-container>
+</div>

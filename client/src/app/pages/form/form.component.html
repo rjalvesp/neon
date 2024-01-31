@@ -1,0 +1,47 @@
+<a [routerLink]="['/']">
+  <span class="material-icons"> chevron_left </span> Go back
+</a>
+<neon-card>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div></div>
+    <div class="form-control">
+      <label for="posted-by">Posted By: </label>
+      <input id="posted-by" type="text" formControlName="postedBy" />
+    </div>
+    <div class="form-control">
+      <label for="summary">Summary: </label>
+      <textarea id="summary" formControlName="summary"></textarea>
+    </div>
+    <div class="form-control">
+      <label for="workflow">Workflow: </label>
+      <input id="workflow" formControlName="workflow" />
+    </div>
+    <div formArrayName="assignees">
+      <div *ngFor="let assignee of assignees.controls; index as i">
+        <div class="form-control">
+          <label [for]="'assignee-' + i">Assignee #{{ i + 1 }}: </label>
+          <div class="form-group">
+            <input [id]="'assignee-' + i" type="text" [formControlName]="i" />
+            <button
+              class="btn-clear"
+              type="button"
+              [disabled]="i === 0"
+              (click)="deleteAssignee(i)"
+            >
+              <span class="material-icons"> clear </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <button class="btn-add" type="button" (click)="addAssignee()">
+        <span class="material-icons"> add </span>
+      </button>
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" [disabled]="!form.valid || form.errors">
+        <span class="material-icons"> save </span>
+        Save
+      </button>
+    </div>
+  </form>
+</neon-card>

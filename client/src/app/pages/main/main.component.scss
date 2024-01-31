@@ -1,0 +1,18 @@
+:host {
+  display: contents;
+  width: 100%;
+  height: 100vh;
+}
+
+a {
+  margin-bottom: 2rem;
+}
+
+.content {
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
