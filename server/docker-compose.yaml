@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MAIN_DB_PASSWORD}
+      MYSQL_DATABASE: ${MAIN_DB_NAME}
+      MYSQL_USER: ${MAIN_DB_USER}
+      MYSQL_PASSWORD: ${MAIN_DB_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - neon-test-db:/var/lib/mysql
+
+volumes:
+  neon-test-db:

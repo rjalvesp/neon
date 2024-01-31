@@ -1,0 +1,20 @@
+{
+  "delay": "500",
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "**/node_modules/**",
+    "**/static/**",
+    "**/tests/**",
+    "**/coverage/**"
+  ],
+  "watch": ["./"],
+  "execMap": {
+    "js": "node"
+  },
+  "ext": "js",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "verbose": true
+}

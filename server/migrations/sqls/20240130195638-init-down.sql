@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS ideas;
+
+DROP TABLE IF EXISTS assignees;
+
+DROP TABLE IF EXISTS ratings;
